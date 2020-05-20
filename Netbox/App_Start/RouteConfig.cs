@@ -13,6 +13,14 @@ namespace Netbox
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.MapRoute(
+            //    "MoviesByReleaseDate",
+            //    "movies/released/{year}/{month}", 
+            //    new { Controller = "Movies", action = "ByReleaseDate" },
+            //    new { year = @"2018|2019", month = @"\d{2}" });
+
+            routes.MapMvcAttributeRoutes();
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
