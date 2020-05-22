@@ -1,0 +1,36 @@
+﻿
+@model IEnumerable<Netbox.Models.Customer>
+
+
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Customer</th>
+            <th>Membership Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customers in Model)
+        {
+        <tr>
+            <td> @Html.ActionLink(customers.Name, "Details", new { id = customers.Id }, null)</td>
+            @*<td> @Html.ActionLink(customers.Name, "Details", new { customers.Id })</td>*@
+            <td>@customers.MembershipType.Name</td>
+
+
+            @*<td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
+            <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
+            <td>@customer.MembershipType.Name</td>*@
+
+
+
+        </tr>
+        }
+    </tbody>
+</table>
