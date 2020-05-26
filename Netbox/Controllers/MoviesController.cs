@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Netbox.Models;
 using Netbox.ViewModels;
 using System.Data.Entity;
+using Netbox.Migrations;
 
 
 namespace Netbox.Controllers
@@ -44,33 +45,56 @@ namespace Netbox.Controllers
             return View(movie);
         }
 
-        /*private IEnumerable<Movie> GetMovies()
+        public ActionResult Edit(int id)
         {
-            return new List<Movie>
-            {
-                new Movie { Id = 1, Name = "Shrek" },
-                new Movie { Id = 2, Name = "Wall-e" }
-            };
-        }*/
-
-        // GET: Movies/Random
-        public ActionResult Random()
-        {
-            var movie = new Movie() {Name = "Shrek!"};
-            var customers = new List<Customer>
-            {
-                new Customer {Name = "Customer 1"},
-                new Customer {Name = "Customer 2"}
-            };
-
-            var viewModel = new RandomMovieViewModel
+            var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
+            if (movie == null)
+                return HttpNotFound();
+            var viewModel = new NewMovieViewModel
             {
                 Movie = movie,
-                Customers = customers
+                Genres = _context.Genres.ToList()
             };
-
-            return View(viewModel);
-
+            return View("MovieForm", viewModel);
         }
+
+        public ActionResult New()
+        {
+            var genres = _context.Genres.ToList();
+            var viewModel = new NewMovieViewModel
+            {
+                Genres = genres
+            };
+            //var membershipTypes = _context.MembershipTypes.ToList();
+            //var viewModel = new NewCustomerViewModel
+            //{
+            //    MembershipTypes = membershipTypes
+            //};
+            return View("MovieForm", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Movie movie)
+        {
+            if(movie.Id == 0) { 
+            movie.DateAdded = DateTime.Now;
+        
+            _context.Movies.Add(movie);
+            }
+            else
+            {
+                var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
+                movieInDb.Name = movie.Name;
+                movieInDb.ReleaseDate = movie.ReleaseDate;
+                movieInDb.GenreId = movie.GenreId;
+                movieInDb.NumberInStock = movie.NumberInStock;
+            }
+            _context.SaveChanges();
+  
+            return RedirectToAction("Index", "Movies");
+
+     
+        }
+
     }
 }

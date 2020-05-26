@@ -8,6 +8,11 @@
 }
 
 <h2>Customers</h2>
+<p>
+    @Html.ActionLink("NEW Customer", "NEW", "Customer", null, new { @class = "btn btn-primary" })
+</p>
+
+
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -18,19 +23,19 @@
     <tbody>
         @foreach (var customers in Model)
         {
-        <tr>
-            <td> @Html.ActionLink(customers.Name, "Details", new { id = customers.Id }, null)</td>
-            @*<td> @Html.ActionLink(customers.Name, "Details", new { customers.Id })</td>*@
-            <td>@customers.MembershipType.Name</td>
+            <tr>
+                <td> @Html.ActionLink(customers.Name, "Edit", new { id = customers.Id }, null)</td>
+                @*<td> @Html.ActionLink(customers.Name, "Details", new { customers.Id })</td>*@
+                <td>@customers.MembershipType.Name</td>
 
 
-            @*<td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
-            <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
-            <td>@customer.MembershipType.Name</td>*@
+                @*<td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
+                    <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
+                    <td>@customer.MembershipType.Name</td>*@
 
 
 
-        </tr>
+            </tr>
         }
     </tbody>
 </table>
