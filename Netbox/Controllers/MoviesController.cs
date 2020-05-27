@@ -79,7 +79,7 @@ namespace Netbox.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var viewModel = new NewMovieViewModel
+                var viewModel = new NewMovieViewModel(movie)
                 {
                     //Movie = movie,
                     Genres = _context.Genres.ToList()
