@@ -17,6 +17,7 @@ namespace Netbox.Models
         [Display(Name = "Membership Type")]
         public byte MembershipTypeId { get; set; }
         [Display(Name = "Date of Birth")]
+        [MemberMinAgeRequirement]
         public DateTime? Birthdate { get; set; }
 
 
