@@ -25,9 +25,12 @@ namespace Netbox.Models
     
         [Display(Name = "Release Date")]
         public DateTime ReleaseDate { get; set; }
- 
+        //[Range(1, 100, ErrorMessage = "The Field Number in Stock must be between 1 and 100.")]
+        [Range(1, 100)]
         [Display(Name = "Number in Stock")]
         public byte NumberInStock { get; set; }
+
+       
     }
 
     
