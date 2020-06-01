@@ -70,13 +70,19 @@ namespace Netbox.Controllers
         }
 
         // GET: Customer
+        //-----------This Method was replace by customer API-----------//
+        //public ViewResult Index()
+        //{
+        //    var customers = _context.Customer.Include(c => c.MembershipType).ToList();
+
+
+
+        //    return View(customers);
+        //}
+
         public ViewResult Index()
         {
-            var customers = _context.Customer.Include(c => c.MembershipType).ToList();
-
-
-
-            return View(customers);
+            return View();
         }
 
         public ActionResult Details(int id)

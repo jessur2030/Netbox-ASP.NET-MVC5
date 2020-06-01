@@ -8,10 +8,14 @@ namespace Netbox
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js",
-                                    "~/scripts/popper.js"
-                                    ));
+            bundles.Add(new ScriptBundle("~/bundles/lib").Include(
+                         "~/Scripts/jquery-{version}.js",
+                       //"~/scripts/popper.js"
+                         "~/Scripts/bootstrap.js",
+                         "~/Scripts/bootbox.js",
+                         "~/Scripts/datatables/jquery.datatables.js",
+                         "~/Scripts/datatables/datatables.boostrap.js"
+                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -21,14 +25,14 @@ namespace Netbox
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+            //bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
            
-                      "~/Scripts/bootstrap.js",
-                      "~/scripts/bootbox.js"));
+            //         ));
 
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-lumen.css",
+                      "~/Content/datatables/css/datatables.bootstrap.css",
                       //"~/Content/bootstrap.css",
                       "~/Content/site.css"));
         }
