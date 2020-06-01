@@ -7,18 +7,22 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Netbox.Dtos
 {
-    public class CustomerDto
+    public class MovieDto
     {
         public int Id { get; set; }
 
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
-        public bool IsSubscribedToNewsletter { get; set; }
 
-        public byte MembershipTypeId { get; set; }
+        [Required]
+        public byte GenreId { get; set; }
 
-       // [MemberMinAgeRequirement]
-        public DateTime? Birthdate { get; set; }
+        public DateTime DateAdded { get; set; }
+
+        public DateTime ReleaseDate { get; set; }
+
+        [Range(1, 100)]
+        public byte NumberInStock { get; set; }
     }
 }

@@ -8,6 +8,7 @@ using Netbox.Models;
 using Netbox.Dtos;
 using AutoMapper;
 
+
 namespace Netbox.Controllers.Api
 {
     public class CustomersController : ApiController
@@ -19,50 +20,62 @@ namespace Netbox.Controllers.Api
         }
 
         //GET /api/customers
-        public IEnumerable<CustomerDto> GetCustomers()
+        public IHttpActionResult GetCustomers()
         {
-            return _context.Customer.ToList().Select(Mapper.Map<Customer, CustomerDto>);
+            var customerDtos = _context.Customer.ToList().Select(Mapper.Map<Customer, CustomerDto>);
+
+            return Ok(customerDtos);
 
         }
 
         //GET /API/customers/1
-        public CustomerDto GetCustomer(int id)
+        //public CustomerDto GetCustomer(int id)
+        //{
+        //    var customer = _context.Customer.SingleOrDefault(c => c.Id == id);
+        //    if (customer == null)
+        //        throw new HttpResponseException(HttpStatusCode.NotFound);
+
+        //    return Mapper.Map<Customer, CustomerDto>(customer);
+        //}
+        public IHttpActionResult GetCustomer(int id)
         {
             var customer = _context.Customer.SingleOrDefault(c => c.Id == id);
-            if (customer == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            return Mapper.Map<Customer, CustomerDto>(customer);
+            if (customer == null)
+                return NotFound();
+
+            return Ok(Mapper.Map<Customer, CustomerDto>(customer));
         }
 
         //POST /api/customers
         [HttpPost]
-        public CustomerDto CreateCustomer(CustomerDto customerDto)
+        public IHttpActionResult CreateCustomer(CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
+
             var customer = Mapper.Map<CustomerDto, Customer>(customerDto);
             _context.Customer.Add(customer);
             _context.SaveChanges();
 
             customerDto.Id = customer.Id;
-
-            return customerDto;
+            return Created(new Uri(Request.RequestUri + "/" + customer.Id), customerDto);
         }
 
         //PUT /api/customers/1
         [HttpPut]
-        public void UpdateCutomers(int id, CustomerDto customerDto)
+        public IHttpActionResult UpdateCustomer(int id, CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
 
             var customerInDb = _context.Customer.SingleOrDefault(c => c.Id == id);
+
             if (customerInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
             Mapper.Map(customerDto, customerInDb);
-            
+
             //*****AutoMapper takes care of this lines of code. 😎😎😎!*****//
             //customerInDb.Name = customerDto.Name;
             //customerInDb.Birthdate = customerDto.Birthdate;
@@ -70,19 +83,21 @@ namespace Netbox.Controllers.Api
             //customerInDb.MembershipTypeId = customerDto.MembershipTypeId;
 
             _context.SaveChanges();
+            return Ok();
         }
 
         // DELETE /api/customers/1
         [HttpDelete]
-        public void DeleteCustomer(int id)
+        public IHttpActionResult DeleteCustomer(int id)
         {
-
             var customerInDb = _context.Customer.SingleOrDefault(c => c.Id == id);
+
             if (customerInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
+
             _context.Customer.Remove(customerInDb);
             _context.SaveChanges();
-
+            return Ok();
         }
     }
 }
