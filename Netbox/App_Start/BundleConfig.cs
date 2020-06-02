@@ -9,12 +9,12 @@ namespace Netbox
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/lib").Include(
-                         "~/Scripts/jquery-{version}.js",
-                       //"~/scripts/popper.js"
-                         "~/Scripts/bootstrap.js",
-                         "~/Scripts/bootbox.js",
-                         "~/Scripts/datatables/jquery.datatables.js",
-                         "~/Scripts/datatables/datatables.boostrap.js"
+                            "~/Scripts/jquery-{version}.js",
+                            //"~/scripts/popper.js",
+                            "~/Scripts/bootstrap.js",
+                            "~/Scripts/bootbox.js",
+                         "~/Scripts/DataTables/jquery.dataTables.js",
+                         "~/Scripts/DataTables/DataTables.boostrap4.js"
                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -32,7 +32,7 @@ namespace Netbox
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-lumen.css",
-                      "~/Content/datatables/css/datatables.bootstrap.css",
+                      "~/Content/datatables/css/datatables.bootstrap4.css",
                       //"~/Content/bootstrap.css",
                       "~/Content/site.css"));
         }
