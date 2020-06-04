@@ -25,11 +25,11 @@
         </p>
 
 
-        <table id="movies" class="table">
+        <table id="movies" class="table table-bordered">
             <thead>
                 <tr>
                     <th>Movie</th>
-                    <th>Genre</th>
+                    <th>Genre        </th>
                     <th>Delete</th>
                 </tr>
             </thead>
@@ -66,7 +66,7 @@
                     {
                         data: "name",
                         render: function (data, type, movie) {
-                            return "<a href='/movie/edit/" + movie.id + "' class='nav-link' >" + movie.name + "</a>";
+                            return "<a href='/movies/edit/" + movie.id + "' class='nav-link' >" + movie.name + "</a>";
                         }
                     }, {
                         data: "genre.name"

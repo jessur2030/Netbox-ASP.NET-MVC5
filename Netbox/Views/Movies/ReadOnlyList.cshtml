@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Netbox.Models.Movie>
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*@if (!Model.Any())
+    {
+        <p>We don't have any movies yet.</p>
+    }
+    else
+    {
+
+    }*@
+
+
+<section>
+    <div class="container mt-5">
+
+        <h1>Movies</h1>
+        @*<table class="table table-bordered table-hover">*@
+
+        <table id="movies" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Movie</th>
+                    <th>Genre</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+    </div>
+
+    @*@foreach (var movie in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(movie.Name, "Edit", "Movies", new { id = movie.Id }, null)</td>
+                <td>@movie.Genre.Name</td>
+                <td>
+                    <button data-movie-id="@movie.Id" class="btn-link js-delete">Delete </button>
+                </td>
+            </tr>
+        }*@
+
+</section>
+
+
+
+@section scripts {
+
+    
+    @*-----View only jquery js code-----*@
+    <script>
+        $(document).ready(function () {
+            var table = $("#movies").DataTable({
+                ajax: {
+                    url: "/api/movies",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+
+                    }, {
+                        data: "genre.name"
+                    }
+
+                ]
+            });
+
+        });
+    </script>
+
+}

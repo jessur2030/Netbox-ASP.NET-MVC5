@@ -80,6 +80,8 @@ namespace Netbox.Controllers
         //    return View(customers);
         //}
 
+
+
         public ViewResult Index()
         {
             return View();

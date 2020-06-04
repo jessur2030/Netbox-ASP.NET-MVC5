@@ -27,7 +27,7 @@
 
 
 
-        <table id="customers" class="table">
+        <table id="customers" class="table table-bordered">
             <thead>
                 <tr>
                     <th>Customer</th>
@@ -59,6 +59,7 @@
 @section scripts {
 
     <script>
+         //Data view js
         $(document).ready(function () {
         var table =  $("#customers").DataTable({
                 ajax: {
@@ -81,7 +82,9 @@
                         }
                     }
                 ]
-            });
+        });
+
+            //Data access js
 
             $("#customers").on("click", ".js-delete", function () {
                 var button = $(this);
