@@ -23,6 +23,27 @@ textarea {
     max-width: 280px;
 }
 
+::selection {
+    color: #fff;
+    background: #333;
+}
+
+/*--------------------Style CSS Scrollbar--------------------*/
+
+/*body::-webkit-scrollbar {
+    width: 0.35rem;
+   
+}
+
+body::-webkit-scrollbar-track {
+    background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #36b3a8;
+    height: .5em;
+}*/
+
 .field-validation-error{
     color:red;
 }
@@ -36,3 +57,19 @@ textarea {
     font-size: 1.25em;
 }
 
+
+.navbar-dark .navbar-brand  {
+    color: rgb(226, 226, 226);
+}
+
+    .navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
+        color: #007bff;
+    }
+
+/*.navbar-dark .navbar-text a {
+    color: #36b3a8;
+}
+    .navbar-dark .navbar-text a:hover, .navbar-dark .navbar-text a:focus {
+        color: #36b3a8;
+    }*/
+ 

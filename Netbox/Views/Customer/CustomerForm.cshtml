@@ -5,48 +5,55 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>New Customer</h2>
+<section>
+    <div class="container mt-5">
 
-@using (Html.BeginForm("Save", "Customer"))
+        <h1>New Customer</h1>
 
-{
-    //For validation Summary
-    @Html.ValidationSummary(true, "Please enter the require fields.")
-    <div class="form-group">
-        @Html.LabelFor(m => m.Customer.Name)
-        @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Customer.Name)
+        @using (Html.BeginForm("Save", "Customer"))
+
+        {
+            //For validation Summary
+            @Html.ValidationSummary(true, "Please enter the require fields.")
+            <div class="form-group">
+                @Html.LabelFor(m => m.Customer.Name)
+                @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Customer.Name)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Customer.MembershipTypeId)
+                @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Customer.MembershipTypeId)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Customer.Birthdate)
+                @Html.TextBoxFor(m => m.Customer.Birthdate, "{0:MMM d, yyyy}", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Customer.Birthdate)
+            </div>
+
+
+
+            @Html.HiddenFor(m => m.Customer.Id)
+            @Html.AntiForgeryToken()
+
+
+            <div class="checkbox">
+                <label>
+                    @Html.CheckBoxFor(m => m.Customer.IsSubscribedToNewsletter) Subscribe to Newletter?
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+
+        }
+
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Customer.MembershipTypeId)
-        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Customer.MembershipTypeId)
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.Customer.Birthdate)
-        @Html.TextBoxFor(m => m.Customer.Birthdate, "{0:MMM d, yyyy}", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Customer.Birthdate)
-    </div>
-
-
-
-    @Html.HiddenFor(m => m.Customer.Id)
-    @Html.AntiForgeryToken()
-
-
-    <div class="checkbox">
-        <label>
-            @Html.CheckBoxFor(m => m.Customer.IsSubscribedToNewsletter) Subscribe to Newletter?
-        </label>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Save</button>
-
-}
+</section>
 
 @section scripts{
     @Scripts.Render("~/bundles/jqueryval")
-    
-    }
+
+}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -12,18 +13,30 @@ namespace Netbox.Controllers.Api
 {
     public class MoviesController : ApiController
     {
- 
+
         private ApplicationDbContext _context;
+
         public MoviesController()
         {
             _context = new ApplicationDbContext();
         }
         //GET /api/movies
+        //public IHttpActionResult GetMovies()
+        //{
+
+
+        // var moviesDto =  _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
+        //    return  Ok(moviesDto);
+        //}
+
         public IEnumerable<MovieDto> GetMovies()
         {
-
-            return _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
+            return _context.Movies
+                .Include(c => c.Genre)
+                .ToList()
+                .Select(Mapper.Map<Movie, MovieDto>);
         }
+
 
         // GET /api/movies/1
         public IHttpActionResult GetMovie(int id)

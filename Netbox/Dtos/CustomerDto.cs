@@ -18,6 +18,8 @@ namespace Netbox.Dtos
 
         public byte MembershipTypeId { get; set; }
 
+        public MembershipTypeDto MembershipType { get; set; }
+
        // [MemberMinAgeRequirement]
         public DateTime? Birthdate { get; set; }
     }

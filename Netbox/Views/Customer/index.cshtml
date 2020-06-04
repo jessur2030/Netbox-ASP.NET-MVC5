@@ -7,33 +7,40 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Customers</h2>
-<!--For custum message if we don't have any customers in database -->
-@*@if (!Model.Any())
-    {
-        <p>We don't have any customers yet. </p>
+<section>
+    <div class="container mt-5">
 
-    }
-    else
-    {
+        <h1>Customers</h1>
+        <!--For custum message if we don't have any customers in database -->
+        @*@if (!Model.Any())
+            {
+                <p>We don't have any customers yet. </p>
 
-    }*@
-<p>
-    @Html.ActionLink("NEW Customer", "NEW", "Customer", null, new { @class = "btn btn-primary" })
-</p>
+            }
+            else
+            {
+
+            }*@
+        <p>
+            @Html.ActionLink("NEW CUSTOMER", "NEW", "Customer", null, new { @class = "btn btn-primary btn-lg" })
+        </p>
 
 
 
-<table id="customers" class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>Customer</th>
-            <th>Membership Type</th>
-            <th>Delete</th>
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
+        <table id="customers" class="table">
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th>Membership Type</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+    </div>
+
+</section>
 
 <!-- This foreach loop has been replaced by /api/customers -->
 @*@foreach (var customers in Model)
@@ -52,47 +59,49 @@
 @section scripts {
 
     <script>
-            $(document).ready(function () {
-                $("#customers").DataTable({
-                    ajax: {
-                        url: "/api/customers",
-                        dataSrc: ""
+        $(document).ready(function () {
+        var table =  $("#customers").DataTable({
+                ajax: {
+                    url: "/api/customers",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        render: function (data, type, customer) {
+                            return "<a href='/customer/edit/" + customer.id + "' class='nav-link' >" + customer.name + "</a>";
+                        }
+                    }, {
+                        data: "membershipType.name"
                     },
-                    columns: [
-                        {
-                            data: "name",
-                            render: function (data, type, customer) {
-                                return "<a href='/customers/edit/" + customer.id + "'>" + customer.name + "</a>";
-                            }
-                        }, {
-                            data: "name"
-                        },
-                        {
-                            data: "id",
-                            render: function (data) {
-                                return "<button class='btn-link js-delete' data-customer-id=" + data + ">Delete</button>";
-                            }
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn btn-secondary js-delete' data-customer-id=" + data + ">Delete</button>";
                         }
-                    ]
-                });
-
-                $("#customers").on("click", ".js-delete", function(){
-                    var button = $(this);
-                    bootbox.confirm("Are you sure you want to delete this customer?", function (result) {
-                        if (result) {
-                            $.ajax({
-                                url: "/api/customers/" + button.attr("data-customer-id"),
-                                method: "DELETE",
-                                success: function () {
-                                    button.parents("tr").remove();
-                                }
-                            });
-                        }
-                    });
-                });
-
+                    }
+                ]
             });
-        </script>
+
+            $("#customers").on("click", ".js-delete", function () {
+                var button = $(this);
+                bootbox.confirm("Are you sure you want to delete this customer?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/customers/" + button.attr("data-customer-id"),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+
+                            }
+                        });
+                    }
+                });
+            });
+
+        });
+    </script>
+
 
     @*<script>
             $(document).ready(function () {
@@ -124,5 +133,3 @@
 
 @*<script src="~/Scripts/bootbox.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>*@
-
-

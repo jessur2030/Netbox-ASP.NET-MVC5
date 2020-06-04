@@ -10,11 +10,15 @@ namespace Netbox
         {
             bundles.Add(new ScriptBundle("~/bundles/lib").Include(
                             "~/Scripts/jquery-{version}.js",
-                            //"~/scripts/popper.js",
+                            //"~/Scripts/jquery-3.5.1.js",
+
                             "~/Scripts/bootstrap.js",
                             "~/Scripts/bootbox.js",
+                         //"~/Scripts/buttons.bootstrap4.js",
+                         //"~/Scripts/DataTables/dataTables.buttons.js",
                          "~/Scripts/DataTables/jquery.dataTables.js",
-                         "~/Scripts/DataTables/DataTables.boostrap4.js"
+                         "~/Scripts/DataTables/DataTables.bootstrap4.js"
+
                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -25,16 +29,28 @@ namespace Netbox
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            //bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-           
-            //         ));
+       
 
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-lumen.css",
-                      "~/Content/datatables/css/datatables.bootstrap4.css",
-                      //"~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                        //"~/Content/bootstrap-lumen.css",
+                      "~/Content/bootstrap.css",
+                      "~/Content/datatables/css/dataTables.bootstrap4.css",
+                      //"~/Content/datatables/css/dataTables.semanticui.css",
+
+
+
+                      //"~/Content/datatables/css/buttons.bootstrap4.css",
+                      //"~/Content/datatables/css/jquery.dataTables.css",
+
+                    
+                      "~/Content/site.css",
+                      "~/Content/App.css"));
+
+            //bundles.Add(new StyleBundle("~/bundles/table").Include(
+            //          "~/Content/DataTables/css/dataTables-{version}.css"
+
+            //     ));
         }
     }
 }
