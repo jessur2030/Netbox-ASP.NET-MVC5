@@ -6,6 +6,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Netbox.Models;
+using Microsoft.Owin.Security.Twitter;
+using Microsoft.Owin.Security;
 
 namespace Netbox
 {
@@ -51,12 +53,27 @@ namespace Netbox
             //    clientSecret: "");
 
             //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
+            //   consumerKey: "04HSz6LM4pAK4mzFi6rSEowtA",
+            //   consumerSecret: "7SmHmX47s1mtF2c0P4opUB3nf7ULgP9q5J0pJZYh0uGwh15cNp");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            //        app.UseTwitterAuthentication(new TwitterAuthenticationOptions
+            //        {
+            //            ConsumerKey = "04HSz6LM4pAK4mzFi6rSEowtA",
+            //            ConsumerSecret = "7SmHmX47s1mtF2c0P4opUB3nf7ULgP9q5J0pJZYh0uGwh15cNp",
+            //            BackchannelCertificateValidator = new CertificateSubjectKeyIdentifierValidator(new[]
+            //{
+            //    "A5EF0B11CEC04103A34A659048B21CE0572D7D47", // VeriSign Class 3 Secure Server CA - G2
+            //    "0D445C165344C1827E1D20AB25F40163D8BE79A5", // VeriSign Class 3 Secure Server CA - G3
+            //    "7FD365A7C2DDECBBF03009F34339FA02AF333133", // VeriSign Class 3 Public Primary Certification Authority - G5
+            //    "39A55D933676616E73A761DFA16A7E59CDE66FAD", // Symantec Class 3 Secure Server CA - G4
+            //    "5168FF90AF0207753CCCD9656462A212B859723B", //DigiCert SHA2 High Assurance Server C‎A 
+            //    "B13EC36903F8BF4701D498261A0802EF63642BC3" //DigiCert High Assurance EV Root CA
+            //})
+            //        });
+
+            app.UseFacebookAuthentication(
+               appId: "384287495847692",
+               appSecret: "3b9b08b3f6c80b1882166b8ed6c186b4");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
