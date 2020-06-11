@@ -8,6 +8,7 @@ using Netbox.ViewModels;
 using System.Data.Entity;
 using Netbox.Migrations;
 
+
 namespace Netbox.Controllers
 {
 
@@ -84,6 +85,7 @@ namespace Netbox.Controllers
 
         public ViewResult Index()
         {
+  
             return View();
         }
 

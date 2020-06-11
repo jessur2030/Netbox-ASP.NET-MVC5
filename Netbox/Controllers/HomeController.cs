@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace Netbox.Controllers
 {
     [AllowAnonymous]
     public class HomeController : Controller
     {
+        //[OutputCache(Duration =50)]
+        //[OutputCache(Duration = 50, Location = OutputCacheLocation.Server, VaryByParam = "*")] TO ENABLE CASHING ON THE SERVER 
+        //[OutputCache(Duration = 0, VaryByParam = "*", NoStore = true)] //TO DESABLE CASHING
         public ActionResult Index()
         {
             return View();

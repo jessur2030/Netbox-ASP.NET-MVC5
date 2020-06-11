@@ -44,11 +44,13 @@ body::-webkit-scrollbar-thumb {
     height: .5em;
 }*/
 
-.field-validation-error{
-    color:red;
+.field-validation-error,
+label.error {
+    color: red;
 }
 
-.input-validation-error {
+.input-validation-error,
+input.error {
     border: 2px solid red;
 }
 
@@ -58,7 +60,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 
-.navbar-dark .navbar-brand  {
+.navbar-dark .navbar-brand {
     color: rgb(226, 226, 226);
 }
 
@@ -72,4 +74,3 @@ body::-webkit-scrollbar-thumb {
     .navbar-dark .navbar-text a:hover, .navbar-dark .navbar-text a:focus {
         color: #36b3a8;
     }*/
- 
