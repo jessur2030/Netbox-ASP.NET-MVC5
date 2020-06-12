@@ -23,10 +23,10 @@ textarea {
     max-width: 280px;
 }
 
-::selection {
+/*::selection {
     color: #fff;
     background: #333;
-}
+}*/
 
 /*--------------------Style CSS Scrollbar--------------------*/
 
@@ -60,13 +60,13 @@ input.error {
 }
 
 
-.navbar-dark .navbar-brand {
+/*.navbar-dark .navbar-brand {
     color: rgb(226, 226, 226);
 }
 
     .navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
         color: #007bff;
-    }
+    }*/
 
 /*.navbar-dark .navbar-text a {
     color: #36b3a8;

@@ -61,11 +61,15 @@
     <script>
          //Data view js
         $(document).ready(function () {
-        var table =  $("#customers").DataTable({
+            var table = $("#customers").DataTable({
+                 //responsive: true,
                 ajax: {
                     url: "/api/customers",
                     dataSrc: ""
+           
+
                 },
+
                 columns: [
                     {
                         data: "name",
@@ -78,9 +82,10 @@
                     {
                         data: "id",
                         render: function (data) {
-                            return "<button class='btn btn-secondary js-delete' data-customer-id=" + data + ">Delete</button>";
+                            return "<button class='btn btn-primary js-delete' data-customer-id=" + data + ">Delete</button>";
                         }
                     }
+                 
                 ]
         });
 

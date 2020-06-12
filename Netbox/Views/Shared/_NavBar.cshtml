@@ -20,11 +20,16 @@
             <li class="nav-item">
                 <a class="nav-link" @Html.ActionLink("Movies", "Index", "Movies")</a>
             </li>
+            @*<li class="nav-item">
+                <a class="nav-link"@Html.Partial("_LoginPartial")</a>
+            </li>*@
 
         </ul>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <div class="mr-auto"></div>
-            @Html.Partial("_LoginPartial")
+            <ul class="navbar-nav">
+                @Html.Partial("_LoginPartial")
+            </ul>
         </div>
 
         @*<form class="form-inline my-2 my-lg-0">

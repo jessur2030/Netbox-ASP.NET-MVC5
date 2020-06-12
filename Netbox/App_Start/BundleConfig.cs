@@ -15,7 +15,7 @@ namespace Netbox
                             "~/Scripts/bootstrap.js",
                             "~/Scripts/bootbox.js",
                          //"~/Scripts/buttons.bootstrap4.js",
-                         //"~/Scripts/DataTables/dataTables.buttons.js",
+                         //"~/Scripts/DataTables/responsive.bootstrap4.min.js",
                          "~/Scripts/DataTables/jquery.dataTables.js",
                          "~/Scripts/DataTables/DataTables.bootstrap4.js",
                          "~/Scripts/typeahead.bundle.js",
@@ -38,12 +38,12 @@ namespace Netbox
                         //"~/Content/bootstrap-lumen.css",
                       "~/Content/bootstrap.css",
                       "~/Content/datatables/css/dataTables.bootstrap4.css",
-                          //"~/Content/datatables/css/dataTables.semanticui.css",
+                      //"~/Content/datatables/css/responsive.bootstrap4.css",
 
 
 
-                          //"~/Content/datatables/css/buttons.bootstrap4.css",
-                          //"~/Content/datatables/css/jquery.dataTables.css",
+                      //"~/Content/datatables/css/buttons.bootstrap4.css",
+                      //"~/Content/datatables/css/jquery.dataTables.css",
 
                       "~/Content/typeahead.css",
                       "~/Content/site.css",

@@ -8,6 +8,7 @@ using Owin;
 using Netbox.Models;
 using Microsoft.Owin.Security.Twitter;
 using Microsoft.Owin.Security;
+using System.Configuration;
 
 namespace Netbox
 {
@@ -71,9 +72,13 @@ namespace Netbox
             //})
             //        });
 
+            //app.UseFacebookAuthentication(
+            //   appId: "384287495847692",
+            //   appSecret: "3b9b08b3f6c80b1882166b8ed6c186b4");
+
             app.UseFacebookAuthentication(
-               appId: "384287495847692",
-               appSecret: "3b9b08b3f6c80b1882166b8ed6c186b4");
+               appId: ConfigurationManager.AppSettings["FacebookAppId"],
+               appSecret: ConfigurationManager.AppSettings["FacebookAppSecret"]);
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
