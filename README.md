@@ -1,5 +1,4 @@
-# Netbox Web App
-Netbox movie rentar application
+# Netbox movie rentar application
 
-Back-End: ASP.NET Framework-MVC5/API, SQL
-Front-End: JavaScript, Bootstrap
+### Back-End: ASP.NET Framework-MVC5/API, SQL
+### Front-End: JavaScript, Bootstrap
