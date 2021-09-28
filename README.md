@@ -1,2 +1,5 @@
 # Netbox Web App
-I built Netbox movie rentar application using ASP.NET Framework-MVC5/API
+Netbox movie rentar application
+
+Back-End: ASP.NET Framework-MVC5/API, SQL
+Front-End: JavaScript, Bootstrap
